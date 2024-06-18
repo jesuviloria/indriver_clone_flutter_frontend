@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:indriver_clone_flutter_frontend/src/presentation/widgets/DefaultButton.dart';
+import 'package:indriver_clone_flutter_frontend/src/presentation/widgets/DefaultTextField.dart';
 
 class LoginContent extends StatelessWidget {
   const LoginContent({super.key});
@@ -10,30 +12,23 @@ class LoginContent extends StatelessWidget {
         Container(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
-          color: Color.fromARGB(255, 21, 152, 213),
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topRight,
+                end: Alignment.bottomLeft,
+                colors: [
+                  Color.fromARGB(255, 12, 38, 145),
+                  Color.fromARGB(255, 34, 156, 249)
+                ]),
+          ),
           padding: EdgeInsets.only(left: 12),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              RotatedBox(
-                quarterTurns: 1,
-                child: Text(
-                  'Log in',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 27,
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
+              _textLoginRotated(),
               SizedBox(height: 50),
-              RotatedBox(
-                quarterTurns: 1,
-                child: Text(
-                  'Sign up',
-                  style: TextStyle(color: Colors.white, fontSize: 24),
-                ),
-              ),
+              _textSignupRotated(),
               SizedBox(height: 90),
             ],
           ),
@@ -41,10 +36,15 @@ class LoginContent extends StatelessWidget {
         Container(
           //height: MediaQuery.of(context).size.height * 0.93,
           //width: MediaQuery.of(context).size.width * 0.8,
-
           margin: EdgeInsets.only(left: 60, bottom: 60),
           decoration: BoxDecoration(
-            color: Color.fromARGB(255, 24, 181, 254),
+            gradient: LinearGradient(
+                begin: Alignment.topRight,
+                end: Alignment.bottomLeft,
+                colors: [
+                  Color.fromARGB(255, 14, 29, 166),
+                  Color.fromARGB(255, 30, 112, 227)
+                ]),
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(35), bottomLeft: Radius.circular(35)),
           ),
@@ -54,132 +54,121 @@ class LoginContent extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(height: 50),
-                Text(
-                  'Welcome',
-                  style: TextStyle(
-                      fontSize: 30,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold),
-                ),
-                Text(
-                  'back...',
-                  style: TextStyle(
-                      fontSize: 30,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold),
-                ),
-                Container(
-                  alignment: Alignment.centerRight,
-                  child: Image.asset(
-                    'assets/img/car_white.png',
-                    width: 150,
-                    height: 150,
-                  ),
-                ),
-                Text(
-                  'Log in',
-                  style: TextStyle(
-                      fontSize: 24,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold),
-                ),
-                Container(
-                  height: 50,
-                  margin: EdgeInsets.only(top: 50, left: 20, right: 20),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(15),
-                        bottomRight: Radius.circular(15)),
-                  ),
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                        label: Text('Email'),
-                        border: InputBorder.none,
-                        prefixIcon: Container(
-                          margin: EdgeInsets.only(top: 10),
-                          child: Wrap(
-                              alignment: WrapAlignment.spaceEvenly,
-                              children: [
-                                Icon(Icons.email_outlined),
-                                Container(
-                                  height: 20,
-                                  width: 1,
-                                  color: Colors.grey,
-                                )
-                              ]),
-                        )),
-                  ),
-                ),
-                Container(
-                  height: 50,
-                  margin: EdgeInsets.only(top: 20, left: 20, right: 20),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(15),
-                        bottomRight: Radius.circular(15)),
-                  ),
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                        label: Text('Password'),
-                        border: InputBorder.none,
-                        prefixIcon: Container(
-                          margin: EdgeInsets.only(top: 10),
-                          child: Wrap(
-                              alignment: WrapAlignment.spaceEvenly,
-                              children: [
-                                Icon(Icons.key_outlined),
-                                Container(
-                                  height: 20,
-                                  width: 1,
-                                  color: Colors.grey,
-                                )
-                              ]),
-                        )),
-                  ),
+                _textTitle('Welcome'),
+                _textTitle('back...'),
+                _imageTitle(),
+                _textLogin(),
+                DefaultTextField(text: 'Email', icon: Icons.email_outlined),
+                DefaultTextField(
+                  text: 'Password',
+                  icon: Icons.lock_outlined,
+                  margin: EdgeInsets.only(top: 15, left: 20, right: 20),
                 ),
                 Spacer(),
-                Container(
-                  height: 45,
-                  width: MediaQuery.of(context).size.width,
-                  //alignment: Alignment.center,
-                  margin: EdgeInsets.only(bottom: 30, left: 20, right: 20),
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    style:
-                        ElevatedButton.styleFrom(backgroundColor: Colors.white),
-                    child: Text(
-                      'Sign in',
-                      style: TextStyle(
-                          color: Colors.cyan,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ),
+                DefaultButton(text: 'Sign in'),
+                _separaterOr(),
+                SizedBox(
+                  height: 10,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      '¿No tienes cuenta?',
-                      style: TextStyle(color: Colors.grey[100], fontSize: 17),
-                    ),
-                    SizedBox(width: 7),
-                    Text(
-                      'Registrate',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 17),
-                    )
-                  ],
-                ),
+                _textInfoOptions(),
                 SizedBox(height: 50)
               ],
             ),
           ),
         ),
+      ],
+    );
+  }
+
+  Widget _textLoginRotated() {
+    return RotatedBox(
+      quarterTurns: 1,
+      child: Text(
+        'Log in',
+        style: TextStyle(
+            color: Colors.white, fontSize: 27, fontWeight: FontWeight.bold),
+      ),
+    );
+  }
+
+  Widget _textSignupRotated() {
+    return RotatedBox(
+      quarterTurns: 1,
+      child: Text(
+        'Sign up',
+        style: TextStyle(color: Colors.white, fontSize: 24),
+      ),
+    );
+  }
+
+  Widget _textTitle(String text) {
+    return Text(
+      text,
+      style: TextStyle(
+          fontSize: 30, color: Colors.white, fontWeight: FontWeight.bold),
+    );
+  }
+
+  Widget _imageTitle() {
+    return Container(
+      alignment: Alignment.centerRight,
+      child: Image.asset(
+        'assets/img/car_white.png',
+        width: 150,
+        height: 150,
+      ),
+    );
+  }
+
+  Widget _textLogin() {
+    return Text(
+      'Log in',
+      style: TextStyle(
+          fontSize: 24, color: Colors.white, fontWeight: FontWeight.bold),
+    );
+  }
+
+  Widget _separaterOr() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Container(
+          width: 25,
+          height: 1,
+          color: Colors.white,
+          margin: EdgeInsets.only(right: 5),
+        ),
+        Text(
+          'O',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 17,
+          ),
+        ),
+        Container(
+          width: 25,
+          height: 1,
+          color: Colors.white,
+          margin: EdgeInsets.only(left: 5),
+        ),
+      ],
+    );
+  }
+
+  Widget _textInfoOptions() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(
+          '¿No tienes cuenta?',
+          style: TextStyle(color: Colors.grey[100], fontSize: 17),
+        ),
+        SizedBox(width: 7),
+        Text(
+          'Registrate',
+          style: TextStyle(
+              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 17),
+        )
       ],
     );
   }
