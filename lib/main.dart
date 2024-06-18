@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:indriver_clone_flutter_frontend/src/presentation/pages/auth/login/loginPage.dart';
+import 'package:indriver_clone_flutter_frontend/src/presentation/pages/auth/signup/SignupPage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +18,11 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: LoginPage(),
+      initialRoute: 'login',
+      routes: {
+        'login': (BuildContext context) => LoginPage(),
+        'signup': (BuildContext context) => SignupPage()
+      },
     );
   }
 }
