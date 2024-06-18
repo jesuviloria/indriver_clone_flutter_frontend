@@ -82,6 +82,7 @@ class SignupContent extends StatelessWidget {
                         icon: Icons.lock_outlined,
                         margin: EdgeInsets.only(left: 50, right: 50, top: 15)),
                     DefaultButton(
+                      onPressed: () {},
                       text: 'Create User',
                       margin: EdgeInsets.only(top: 30, left: 60, right: 60),
                     ),
