@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:indriver_clone_flutter_frontend/src/presentation/widgets/DefaultButton.dart';
-import 'package:indriver_clone_flutter_frontend/src/presentation/widgets/DefaultTextField.dart';
+import 'package:indriver_clone_flutter_frontend/src/presentation/widgets/DefaultTextFieldOutlined.dart';
 
 class SignupContent extends StatelessWidget {
   const SignupContent({super.key});
@@ -46,45 +46,52 @@ class SignupContent extends StatelessWidget {
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft,
                 colors: [
-                  Color.fromARGB(255, 255, 255, 255),
-                  Color.fromARGB(255, 154, 154, 154)
+                  Color.fromARGB(255, 14, 29, 106),
+                  Color.fromARGB(255, 30, 112, 227)
                 ],
               )),
-          child: Column(
+          child: Stack(
             children: [
-              _imageBanner(),
-              DefaultTextField(
-                  text: 'Name',
-                  icon: Icons.person_2_outlined,
-                  margin: EdgeInsets.only(left: 50, right: 50, top: 50)),
-              DefaultTextField(
-                  text: 'Apellido',
-                  icon: Icons.person_2_outlined,
-                  margin: EdgeInsets.only(left: 50, right: 50, top: 15)),
-              DefaultTextField(
-                  text: 'Email',
-                  icon: Icons.email_outlined,
-                  margin: EdgeInsets.only(left: 50, right: 50, top: 15)),
-              DefaultTextField(
-                  text: 'Telefono',
-                  icon: Icons.phone_outlined,
-                  margin: EdgeInsets.only(left: 50, right: 50, top: 15)),
-              DefaultTextField(
-                  text: 'Password',
-                  icon: Icons.lock_outlined,
-                  margin: EdgeInsets.only(left: 50, right: 50, top: 15)),
-              DefaultTextField(
-                  text: 'Confirmar Password',
-                  icon: Icons.lock_outlined,
-                  margin: EdgeInsets.only(left: 50, right: 50, top: 15)),
-              DefaultButton(
-                text: 'Create User',
-                margin: EdgeInsets.only(top: 30, left: 60, right: 60),
+              _imageBackground(context),
+              SingleChildScrollView(
+                child: Column(
+                  children: [
+                    _imageBanner(),
+                    DefaultTextFieldOutlined(
+                        text: 'Name',
+                        icon: Icons.person_2_outlined,
+                        margin: EdgeInsets.only(left: 50, right: 50, top: 50)),
+                    DefaultTextFieldOutlined(
+                        text: 'Apellido',
+                        icon: Icons.person_2_outlined,
+                        margin: EdgeInsets.only(left: 50, right: 50, top: 15)),
+                    DefaultTextFieldOutlined(
+                        text: 'Email',
+                        icon: Icons.email_outlined,
+                        margin: EdgeInsets.only(left: 50, right: 50, top: 15)),
+                    DefaultTextFieldOutlined(
+                        text: 'Telefono',
+                        icon: Icons.phone_outlined,
+                        margin: EdgeInsets.only(left: 50, right: 50, top: 15)),
+                    DefaultTextFieldOutlined(
+                        text: 'Password',
+                        icon: Icons.lock_outlined,
+                        margin: EdgeInsets.only(left: 50, right: 50, top: 15)),
+                    DefaultTextFieldOutlined(
+                        text: 'Confirmar Password',
+                        icon: Icons.lock_outlined,
+                        margin: EdgeInsets.only(left: 50, right: 50, top: 15)),
+                    DefaultButton(
+                      text: 'Create User',
+                      margin: EdgeInsets.only(top: 30, left: 60, right: 60),
+                    ),
+                    SizedBox(height: 25),
+                    _separatorOr(),
+                    SizedBox(height: 10),
+                    _textIAlreadyHaveAccount(context)
+                  ],
+                ),
               ),
-              SizedBox(height: 25),
-              _separatorOr(),
-              SizedBox(height: 10),
-              _textIAlreadyHaveAccount(context)
             ],
           ),
         )
@@ -123,7 +130,7 @@ class SignupContent extends StatelessWidget {
       margin: EdgeInsets.only(top: 60),
       alignment: Alignment.center,
       child: Image.asset(
-        'assets/img/delivery.png',
+        'assets/img/trip.png',
         width: 180,
         height: 180,
       ),
@@ -175,6 +182,19 @@ class SignupContent extends StatelessWidget {
           ),
         )
       ],
+    );
+  }
+
+  Widget _imageBackground(BuildContext context) {
+    return Container(
+      alignment: Alignment.bottomCenter,
+      margin: EdgeInsets.only(bottom: 50),
+      child: Image.asset(
+        'assets/img/destination.png',
+        width: MediaQuery.of(context).size.width * 0.6,
+        height: MediaQuery.of(context).size.height * 0.4,
+        opacity: AlwaysStoppedAnimation(0.2),
+      ),
     );
   }
 }

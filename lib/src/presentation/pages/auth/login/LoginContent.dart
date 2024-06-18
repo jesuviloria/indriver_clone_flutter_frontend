@@ -36,13 +36,14 @@ class LoginContent extends StatelessWidget {
         Container(
           //height: MediaQuery.of(context).size.height * 0.93,
           //width: MediaQuery.of(context).size.width * 0.8,
-          margin: EdgeInsets.only(left: 60, bottom: 60),
+          height: MediaQuery.of(context).size.height,
+          margin: EdgeInsets.only(left: 60, bottom: 35),
           decoration: BoxDecoration(
             gradient: LinearGradient(
                 begin: Alignment.topRight,
                 end: Alignment.bottomLeft,
                 colors: [
-                  Color.fromARGB(255, 14, 29, 166),
+                  Color.fromARGB(255, 14, 29, 106),
                   Color.fromARGB(255, 30, 112, 227)
                 ]),
             borderRadius: BorderRadius.only(
@@ -50,29 +51,34 @@ class LoginContent extends StatelessWidget {
           ),
           child: Container(
             margin: EdgeInsets.only(left: 25, right: 25),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(height: 50),
-                _textTitle('Welcome'),
-                _textTitle('back...'),
-                _imageTitle(),
-                _textLogin(),
-                DefaultTextField(text: 'Email', icon: Icons.email_outlined),
-                DefaultTextField(
-                  text: 'Password',
-                  icon: Icons.lock_outlined,
-                  margin: EdgeInsets.only(top: 15, left: 20, right: 20),
-                ),
-                Spacer(),
-                DefaultButton(text: 'Sign in'),
-                _separaterOr(),
-                SizedBox(
-                  height: 10,
-                ),
-                _textInfoOptions(context),
-                SizedBox(height: 50)
-              ],
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(height: 50),
+                  _textTitle('Welcome'),
+                  _textTitle('back...'),
+                  _imageTitle(),
+                  _textLogin(),
+                  DefaultTextField(text: 'Email', icon: Icons.email_outlined),
+                  DefaultTextField(
+                    text: 'Password',
+                    icon: Icons.lock_outlined,
+                    margin: EdgeInsets.only(top: 15, left: 20, right: 20),
+                  ),
+                  /* Spacer(), */
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * 0.2,
+                  ),
+                  DefaultButton(text: 'Sign in'),
+                  _separaterOr(),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  _textInfoOptions(context),
+                  SizedBox(height: 50)
+                ],
+              ),
             ),
           ),
         ),
