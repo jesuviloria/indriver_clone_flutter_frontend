@@ -28,7 +28,7 @@ class LoginContent extends StatelessWidget {
             children: [
               _textLoginRotated(),
               SizedBox(height: 50),
-              _textSignupRotated(),
+              _textSignupRotated(context),
               SizedBox(height: 90),
             ],
           ),
@@ -70,7 +70,7 @@ class LoginContent extends StatelessWidget {
                 SizedBox(
                   height: 10,
                 ),
-                _textInfoOptions(),
+                _textInfoOptions(context),
                 SizedBox(height: 50)
               ],
             ),
@@ -91,12 +91,17 @@ class LoginContent extends StatelessWidget {
     );
   }
 
-  Widget _textSignupRotated() {
-    return RotatedBox(
-      quarterTurns: 1,
-      child: Text(
-        'Sign up',
-        style: TextStyle(color: Colors.white, fontSize: 24),
+  Widget _textSignupRotated(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(context, 'signup');
+      },
+      child: RotatedBox(
+        quarterTurns: 1,
+        child: Text(
+          'Sign up',
+          style: TextStyle(color: Colors.white, fontSize: 24),
+        ),
       ),
     );
   }
@@ -155,7 +160,7 @@ class LoginContent extends StatelessWidget {
     );
   }
 
-  Widget _textInfoOptions() {
+  Widget _textInfoOptions(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -164,10 +169,15 @@ class LoginContent extends StatelessWidget {
           style: TextStyle(color: Colors.grey[100], fontSize: 17),
         ),
         SizedBox(width: 7),
-        Text(
-          'Registrate',
-          style: TextStyle(
-              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 17),
+        GestureDetector(
+          onTap: () {
+            Navigator.pushNamed(context, 'signup');
+          },
+          child: Text(
+            'Sign up',
+            style: TextStyle(
+                color: Colors.white, fontWeight: FontWeight.bold, fontSize: 17),
+          ),
         )
       ],
     );
